@@ -1,0 +1,8 @@
+dependencies {
+    compile libs.slf4j
+    compile libs.logbackClassic
+
+    testCompile libs.junit4
+	
+	
+}

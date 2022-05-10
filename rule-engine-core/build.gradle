@@ -1,0 +1,51 @@
+configurations {
+	codegen
+}
+
+task generateAntlr(type: JavaExec) {
+	main = "org.antlr.v4.Tool"
+	classpath = configurations.codegen
+	
+	def destDir = new File(projectDir, "src/generated/java/com/everest/rule/sql/expr/parser/generated")
+	def grammarFile = "$projectDir/src/main/resources/grammar/SqlGrammar.g4"
+	
+	inputs.file grammarFile
+	outputs.dir destDir
+	
+	args "-o", destDir,
+			"-package", "com.everest.rule.sql.expr.parser.generated",
+			"-visitor",
+			grammarFile
+			
+	doFirst {
+		delete destDir
+	}
+}
+
+clean.doFirst {
+	delete "$projectDir/src/generated/java/com/everest/rule/sql/expr/parser/generated"
+}
+
+jar {
+	from sourceSets.main.allJava
+}
+
+compileJava.dependsOn(generateAntlr)
+
+dependencies {
+	codegen libs.antlrCodegen
+	implementation libs.antlrRuntime
+	
+	implementation libs.slf4j
+	implementation libs.logbackCore
+	implementation libs.logbackClassic
+	implementation libs.guava
+	implementation libs.guice
+	implementation libs.commonsBeanutils
+
+	testImplementation libs.junit4
+	testImplementation libs.mockito
+	testImplementation libs.hamcrest
+	
+}
+

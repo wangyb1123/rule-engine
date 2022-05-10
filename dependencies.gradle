@@ -1,0 +1,71 @@
+ext {
+    versions = [
+        jackson           : '2.9.7',       // Json Serializer / Deserializer
+        okhttp            : '3.11.0',      // HTTP Client
+        slf4j             : '1.7.25',      // Logging 
+        logback		      : '1.2.11',       // Logging
+        guava             : '26.0-jre',    // Common / Helper libraries
+        antlr		      : '4.7.2',       // Antlr
+		guice 			  : '5.0.0',
+		commonsCollection : '4.1',
+		commonsBeanutils  : '1.9.4',
+        jbcrypt           : '0.4',         // BCrypt salted hashing library
+
+		junit4             : '4.12',        // Unit Testing
+		mockito			  : '3.12.4',
+		hamcrest		  : '2.2',
+    ]
+    libs = [
+		antlrRuntime		  	  : "org.antlr:antlr4-runtime:$versions.antlr",
+		antlrCodegen		  	  : "org.antlr:antlr4:$versions.antlr",
+		guice					  : "com.google.inject:guice:$versions.guice",
+        okhttp                    : "com.squareup.okhttp3:okhttp:$versions.okhttp",
+        okhttpUrlConnection       : "com.squareup.okhttp3:okhttp-urlconnection:$versions.okhttp",
+        loggingInterceptor        : "com.squareup.okhttp3:logging-interceptor:$versions.okhttp",
+        jacksonCore               : "com.fasterxml.jackson.core:jackson-core:$versions.jackson",
+        jacksonDatabind           : "com.fasterxml.jackson.core:jackson-databind:$versions.jackson",
+        jacksonAnnotations        : "com.fasterxml.jackson.core:jackson-annotations:$versions.jackson",
+        jacksonDatatypeJdk8       : "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$versions.jackson",
+        jacksonDatatypeJsr310     : "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$versions.jackson",
+        jacksonDataformatCsv      : "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:$versions.jackson",
+        metricsCore               : "io.dropwizard.metrics:metrics-core:$versions.metrics",
+        metricsJvm                : "io.dropwizard.metrics:metrics-jvm:$versions.metrics",
+        metricsJson               : "io.dropwizard.metrics:metrics-json:$versions.metrics",
+        metricsLogback            : "io.dropwizard.metrics:metrics-logback:$versions.metrics",
+        metricsHealthchecks       : "io.dropwizard.metrics:metrics-healthchecks:$versions.metrics",
+        metricsGraphite           : "io.dropwizard.metrics:metrics-graphite:$versions.metrics",
+        undertowCore              : "io.undertow:undertow-core:$versions.undertow",
+        slf4j                     : "org.slf4j:slf4j-api:$versions.slf4j",
+        slf4jLog4j                : "org.slf4j:log4j-over-slf4j:$versions.slf4j",
+        logbackClassic            : "ch.qos.logback:logback-classic:$versions.logback",
+		logbackCore               : "ch.qos.logback:logback-core:$versions.logback",
+		commonsCollection		  : "org.apache.commons:commons-collections4:$versions.commonsCollection",
+		commonsBeanutils		  : "commons-beanutils:commons-beanutils:$versions.commonsBeanutils",
+        guava                     : "com.google.guava:guava:$versions.guava",
+        typesafeConfig            : "com.typesafe:config:$versions.typesafeConfig",
+        handlebars                : "com.github.jknack:handlebars:$versions.handlebars",
+        handlebarsJackson         : "com.github.jknack:handlebars-jackson2:$versions.handlebars",
+        handlebarsMarkdown        : "com.github.jknack:handlebars-markdown:$versions.handlebars",
+        handlebarsHumanize        : "com.github.jknack:handlebars-humanize:$versions.handlebars",
+        handlebarsHelpers         : "com.github.jknack:handlebars-helpers:$versions.handlebars",
+        htmlCompressor            : "com.googlecode.htmlcompressor:htmlcompressor:$versions.htmlCompressor",
+        hikaricp                  : "com.zaxxer:HikariCP:$versions.hikaricp",
+        jool                      : "org.jooq:jool:$versions.jool",
+        hsqldb                    : "org.hsqldb:hsqldb:$versions.hsqldb",
+        s3                        : "com.amazonaws:aws-java-sdk-s3:$versions.aws",
+        flyway                    : "org.flywaydb:flyway-core:$versions.flyway",
+        connectorj                : "mysql:mysql-connector-java:$versions.connectorj",
+        jooq                      : "org.jooq:jooq:$versions.jooq",
+        jooqCodegen               : "org.jooq:jooq-codegen:$versions.jooq",
+        hashids                   : "org.hashids:hashids:$versions.hashids",
+        failsafe                  : "net.jodah:failsafe:$versions.failsafe",
+        jsoup                     : "org.jsoup:jsoup:$versions.jsoup",
+        lombok                    : "org.projectlombok:lombok:$versions.lombok",
+        sitemapgen4j              : "com.github.dfabulich:sitemapgen4j:$versions.sitemapgen4j",
+        jbcrypt                   : "org.mindrot:jbcrypt:$versions.jbcrypt",
+
+		junit4                     : "junit:junit:$versions.junit4",
+		mockito					  : "org.mockito:mockito-core:$versions.mockito",
+		hamcrest				  : "org.hamcrest:hamcrest:$versions.hamcrest",
+    ]
+}

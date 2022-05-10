@@ -1,0 +1,91 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    // buildscript dependencies can be used for build time plugins.
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.4"
+    }
+}
+
+// Include a gradle script that has all of our dependencies split out.
+apply from: "dependencies.gradle"
+
+allprojects {
+// Apply the java plugin to add support for Java
+	apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    // Using Jitpack so I need the repo name in the group to match.
+    group = 'com.everest.ruleengine'
+    version = '0.0.1-SNAPSHOT'
+	
+	repositories {
+        mavenLocal()
+        mavenCentral()
+        //maven { url 'https://jitpack.io' } // This allows us to use jitpack projects
+    }
+	
+	configurations.all {
+        resolutionStrategy {
+            // fail eagerly on version conflict (includes transitive dependencies)
+            // e.g. multiple different versions of the same dependency (group and name are equal)
+            failOnVersionConflict()
+
+            // Auto force all of our explicit dependencies.
+            libs.each { k, v -> force(v) }
+            force('commons-logging:commons-logging:1.2')
+            //force('com.google.code.findbugs:jsr305:3.0.2')
+
+            // cache dynamic versions for 10 minutes
+            cacheDynamicVersionsFor 10*60, 'seconds'
+            // don't cache changing modules at all
+            cacheChangingModulesFor 0, 'seconds'
+        }
+    }
+	
+	// Maven Publish Begin
+    task sourceJar(type: Jar) {
+        from sourceSets.main.allJava
+    }
+
+    // This publishes sources with our jars.
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                artifact sourceJar {
+                    classifier "sources"
+                }
+            }
+        }
+    }
+    // Maven Publish End
+}
+
+subprojects {
+
+	apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+
+    sourceSets {
+		//main.java.srcDir "src/main/java"
+		//test.java.srcDir "src/test/java"
+        main {
+            java {
+                srcDirs = ["src/main/java", "src/generated/java"]
+            }
+            resources {
+                srcDirs = ["src/main/resources", "ui/assets"]
+            }
+        }
+    }
+
+
+
+    
+	
+
+
+}
