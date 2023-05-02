@@ -27,7 +27,7 @@ public class FunctionPredicate<T> implements Predicate<T> {
             if(result instanceof Optional){
                 result = ((Optional<?>) result).orElse(null);
             }
-            return predicate.test(object);
+            return predicate.test((T) result);
 
         }catch (RuleEngineException e) {
             throw new IllegalArgumentException(String.format("Problem while invoking function %s", functionCall), e);
@@ -37,5 +37,13 @@ public class FunctionPredicate<T> implements Predicate<T> {
     @VisibleForTesting
     Predicate<T> getPredicate() {
         return predicate;
+    }
+
+    public T get(Object object, Class<T> clazz){
+        try {
+            return clazz.cast(object);
+        } catch (ClassCastException e) {
+            return null;
+        }
     }
 }

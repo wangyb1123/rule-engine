@@ -84,7 +84,7 @@ public class FunctionCallTest {
 
         FunctionCall functionCall = new FunctionCall(ruleContext, "functionCallWithObject", Lists.newArrayList("$it", "test_user"));
         Object result = functionCall.invoke(new ObjectWrapper(trade));
-        Assert.assertThat(result, Matchers.is("test_user_functionCallWithObject_TradeMock"));
+        Assert.assertThat(result, Matchers.is("test_user_functionCallWithObject_TradeMock_1"));
     }
 
 

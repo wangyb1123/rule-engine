@@ -539,7 +539,7 @@ public class ParserTest {
         TradeMock trade1 = new TradeMock(1, "book_1", "legal_1", "fx", "cpty_1", LocalDate.of(2019, 4, 17));
         trade1.setTradeGeneral(Optional.empty());
 
-        String sql = "functionCallWithObject(it, 'test_user') = 'test_user_functionCallWithObject_TradeMock' and toUpperCase('book') = 'BOOK' and book = 'book_1'";
+        String sql = "functionCallWithObject(it, 'test_user') = 'test_user_functionCallWithObject_TradeMock_1' and toUpperCase('book') = 'BOOK' and book = 'book_1'";
         BeanFilter predicate = buildPredicate(sql);
         Assert.assertTrue(predicate.evaluate(trade1));
     }
@@ -549,7 +549,7 @@ public class ParserTest {
         TradeMock trade1 = new TradeMock(1, "book_1", "legal_1", "fx", "cpty_1", LocalDate.of(2019, 4, 17));
         trade1.setTradeGeneral(Optional.empty());
 
-        String sql = "checkRegion('HK', 'Asia') and functionCallTest('Sydney', 'Australia') and book = 'book_1'";
+        String sql = "checkRegion('HK', 'Asia') and functionCallTest('Sydney', 'Australia') = 'Australia' and book = 'book_1'";
         BeanFilter predicate = buildPredicate(sql);
         Assert.assertTrue(predicate.evaluate(trade1));
     }
